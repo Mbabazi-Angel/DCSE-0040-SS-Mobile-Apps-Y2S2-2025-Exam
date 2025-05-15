@@ -5,6 +5,40 @@ class Mockupscreentwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> popularMovies = [
+      {
+        "title": "Birds of Prey",
+        "year": "2019",
+        "duration": "1h 48m",
+        "genre": "Romance, Comedy",
+        "image": "assets/BirdsofPrey.jpg",
+      },
+      {
+        "title": "Red Sparrow",
+        "year": "2019",
+        "duration": "1h 53m",
+        "genre": "Car Action, Crime, Drama",
+        "image": "assets/Redsparrow.jpg",
+      },
+    ];
+
+    final List<Map<String, String>> nowPlayingMovies = [
+      {
+        "title": "To All the Boys: P.S. I Still Love You",
+        "year": "2019",
+        "duration": "1h 48m",
+        "genre": "Romance, Comedy",
+        "image": "assets/Boys.jpg",
+      },
+      {
+        "title": "For v Ferrari",
+        "year": "2019",
+        "duration": "1h 53m",
+        "genre": "Car Action, Crime, Drama",
+        "image": "assets/Ford.ppg",
+      },
+    ];
+
     return Scaffold(
       backgroundColor: Colors.purple,
       appBar: AppBar(
@@ -28,7 +62,7 @@ class Mockupscreentwo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Jumanji: The Next LeveL",
+                          "Jumanji: The Next Level",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -58,36 +92,8 @@ class Mockupscreentwo extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    "asset/BirdsofPrey.jpg",
-                    width: 80,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Text('Birds of Prey - Action, Crime, Comedy, Drama'),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    "asset/Redsparrow.jpg",
-                    width: 80,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(child: Text('Red Sparrow - Mystery, Thriller')),
-              ],
+              children:
+                  popularMovies.map((movie) => _buildMovieCard(movie)).toList(),
             ),
 
             // Now Playing
@@ -96,37 +102,36 @@ class Mockupscreentwo extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    "asset/Boys.jpg",
-                    width: 80,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(child: Text('To All the Boys: PS I Still Love You')),
-              ],
-            ),
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    "Ford.png",
-                    width: 80,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(child: Text('Ford v Ferrari - Drama, Action')),
-              ],
+              children:
+                  nowPlayingMovies
+                      .map((movie) => _buildMovieCard(movie))
+                      .toList(),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMovieCard(Map<String, String> movie) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Image.asset(
+            movie["image"]!,
+            width: 80,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
+          Text(
+            movie["title"]!,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          Text("${movie["year"]} • ${movie["duration"]}"),
+          Text(movie["genre"]!),
+        ],
       ),
     );
   }

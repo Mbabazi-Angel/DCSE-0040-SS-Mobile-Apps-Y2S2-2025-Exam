@@ -59,6 +59,7 @@ flutter:
     - assets/ford.png
     - assets/johnwick.jpg
     - assets/redsparrow.jpg
-    
+    - assets/birdsofprey.jpg
+    - assets/ford.png
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

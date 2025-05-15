@@ -1,4 +1,8 @@
 # movie_app
+![Screenshot 2025-05-15 171900](https://github.com/user-attachments/assets/fd0f85c0-81ec-4c3a-aa66-71b7241efda8)
+
+![Screenshot 2025-05-15 174310](https://github.com/user-attachments/assets/dffa59aa-7d7d-4b28-8b9a-267957d6c797)
+
 
 A new Flutter project.
 
